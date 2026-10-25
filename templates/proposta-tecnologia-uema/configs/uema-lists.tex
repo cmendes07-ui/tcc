@@ -1,4 +1,4 @@
-% --- Configuração Definitiva de Alíneas (Padrão UEMA) ---
+% --- Configuração Definitiva de Alíneas e Listas Pré-Textuais (Padrão UEMA) ---
 \usepackage{enumitem}
 
 \newlist{uemaenum}{enumerate}{1}
@@ -13,7 +13,26 @@
 % Para listas com marcadores (pontos), se precisar:
 \newlist{uemaball}{itemize}{1}
 \setlist[uemaball,1]{
+    label=\textbullet,
     leftmargin=2.75cm,
     itemsep=2pt,
     topsep=2pt
+}
+
+% --- Títulos das Listas Pré-Textuais (Padrão UEMA) ---
+\addto\captionsbrazil{%
+  \renewcommand{\listfigurename}{LISTA DE ILUSTRAÇÕES}%
+  \renewcommand{\listtablename}{LISTA DE TABELAS}%
+  \renewcommand{\listadesiglasname}{LISTA DE SIGLAS}%
+  \renewcommand{\listadesimbolosname}{LISTA DE SÍMBOLOS}%
+}
+
+% Ambiente para Lista de Abreviaturas (separada da Lista de Siglas conforme modelo UEMA)
+\newcommand{\listadeabreviaturasname}{LISTA DE ABREVIATURAS}
+\newenvironment{abreviaturas}{%
+  \pretextualchapter{\listadeabreviaturasname}
+  \begin{symbols}
+}{%
+  \end{symbols}
+  \cleardoublepage
 }
